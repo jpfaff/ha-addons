@@ -11,6 +11,8 @@ MQTT_PASSWORD="$(bashio::config 'mqtt_password')"
 MQTT_TOPIC="$(bashio::config 'mqtt_topic')"
 MQTT_TIMESTAMP="$(bashio::config 'mqtt_timestamp')"
 
+METERS="$(bashio::config 'meters')"
+
 METER1_PROTOCOL="$(bashio::config 'meter1_protocol')"
 METER1_PARITY="$(bashio::config 'meter1_parity')"
 METER1_BAUDRATE="$(bashio::config 'meter1_baudrate')"
@@ -54,6 +56,8 @@ sed -i "s/{mqtt_username}/${MQTT_USERNAME}/g" "vzlogger.conf"
 sed -i "s/{mqtt_password}/${MQTT_PASSWORD}/g" "vzlogger.conf"
 sed -i "s#{mqtt_topic}#${MQTT_TOPIC}#g" "vzlogger.conf"
 sed -i "s#{mqtt_timestamp}#${MQTT_TIMESTAMP}#g" "vzlogger.conf"
+
+sed -i "s|{meters}|${METERS}|g" "vzlogger.conf"
 
 #Meter 1 options
 sed -i "s/{meter1_protocol}/${METER1_PROTOCOL}/g" "vzlogger.conf"
